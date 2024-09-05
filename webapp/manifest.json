@@ -1,0 +1,287 @@
+{
+  "_version": "1.53.0",
+  "sap.app": {
+    "id": "com.ibs.ibsappivenpcanalytics",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.14.1",
+      "toolsId": "691858fa-96ab-4947-beb7-36b92cf20d68"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZIVN_PO_CONFIRMATION_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ASNService": {
+        "uri": "/sap/opu/odata/sap/ZIVN_ASN_CREATION_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "SESService": {
+        "uri": "/sap/opu/odata/sap/ZIVN_SES_CREATION_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "InvCreationService": {
+        "uri": "/sap/opu/odata/sap/ZIVN_INV_CREAT_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.114.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.ibs.ibsappivenpcanalytics.i18n.i18n"
+        }
+      },
+      "oDataModel2": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      },
+      "products": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/products.json"
+			},
+			"purchase": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/purchase.json"
+			},
+			"managed": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/managed.json"
+			},
+      "onPremService": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"headers": {
+						"loginid": "",
+						"logintype": ""
+					},
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ASNService",
+				"preload": true
+			},
+      "oDataModelSES": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"headers": {
+						"loginid": "",
+						"logintype": ""
+					},
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "SESService",
+				"preload": true
+			},
+      "oDataModelInvCreation": {
+        "dataSource": "InvCreationService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "com.ibs.ibsappivenpcanalytics.view",
+        "controlAggregation": "pages",
+        "controlId": "myPage"
+      },
+      "routes": [
+        {
+          "name": "Default",
+          "pattern": "",
+          "target": [
+            "TargetBase"
+          ]
+        },
+        {
+          "name": "Master",
+          "pattern": "Master",
+          "target": [
+            "Home"
+          ]
+        },
+        {
+					"name": "PODetails",
+					"pattern": "PODetails/{objectStatus}/{objectId}",
+					"target": [
+						"PODetails"
+					]
+				},
+        {
+          "name": "Page1",
+          "pattern": "Page1",
+          "target": [
+            "Page1"
+          ]
+        },
+        {
+          "name": "Page2",
+          "pattern": "Page2",
+          "target": [
+            "Page2"
+          ]
+        },
+        {
+					"pattern": "DetailASN/{navValue}/{navAsn}",
+					"name": "DetailASN",
+					"target": "DetailASN"
+				},
+        {
+					"pattern": "SESPOList",
+					"name": "SESPOList",
+					"target": "SESPOList"
+				},
+        {
+					"pattern": "SESPODetails/{navValue}/{navSes}",
+					"name": "SESPODetails",
+					"target": "SESPODetails"
+				},
+        {
+          "name": "invcreation",
+          "pattern": "RouteInvoice_Master",
+          "target": [
+            "invcreation"
+          ]
+        },
+        {
+					"name": "Invoice_Detail",
+					"pattern": "Invoice_Detail/{objectStatus}/{objectId}",
+					"target": [
+						"Invoice_Detail"
+					]
+				}
+      ],
+      "targets": {
+        "TargetBase": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "App",
+          "viewName": "App"
+        },
+        "Home": {
+          "viewType": "XML",
+          "viewName": "Master",
+          "controlAggregation": "pages"
+        },
+        "PODetails": {
+					"viewType": "XML",
+					"viewName": "PODetails"
+				},
+        "Page1": {
+          "viewType": "XML",
+          "viewName": "Page1",
+          "controlAggregation": "pages"
+        },
+        "Page2": {
+          "viewType": "XML",
+          "viewName": "Page2",
+          "controlAggregation": "pages"
+        },
+        "DetailASN": {
+					"viewType": "XML",
+					"viewName": "DetailASN"
+				},
+        "SESPOList": {
+					"viewType": "XML",
+					"viewName": "SESPOList"
+				},
+        "SESPODetails": {
+					"viewType": "XML",
+					"viewName": "SESPODetails"
+				},
+        "invcreation": {
+          "viewType": "XML",
+          "viewName": "Invoice_Master"
+        },
+        "Invoice_Detail": {
+					"viewType": "XML",
+					"viewName": "Invoice_Detail"
+				}
+      }
+    },
+    "rootView": {
+      "viewName": "com.ibs.ibsappivenpcanalytics.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}
