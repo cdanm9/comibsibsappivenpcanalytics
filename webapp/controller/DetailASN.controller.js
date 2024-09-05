@@ -8,7 +8,7 @@ sap.ui.define([
 	"sap/m/MessageBox",
 	'sap/ui/core/BusyIndicator',
 	"../model/formatterASN",
-	"sap/ui/export/Spreadsheet"
+	"sap/ui/export/Spreadsheet"    
 ], function (Controller, History, JSONModel, MessageToast, Filter, FilterOperator, MessageBox, BusyIndicator, formatter, Spreadsheet) {
 	"use strict";
     var context = null;
