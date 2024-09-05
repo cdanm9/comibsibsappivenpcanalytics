@@ -1,0 +1,73 @@
+<!-- <mvc:View controllerName="com.ibs.ibsappivenpcanalytics.controller.App"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <App id="app">
+    </App>
+</mvc:View> -->
+
+<mvc:View
+    controllerName="com.ibs.ibsappivenpcanalytics.controller.App"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:tnt="sap.tnt"
+    height="100%"
+>
+    <tnt:ToolPage id="toolPage">
+        <tnt:header>
+            <tnt:ToolHeader>
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:sideContent>
+            <tnt:SideNavigation itemSelect="onItemSelect">
+                <tnt:NavigationList>
+                    <tnt:NavigationListItem
+                        text="PO Confirmation"
+                        key="Master"
+                    />
+                    <tnt:NavigationListItem
+                        text="Order Analytics"
+                        key="Page1"
+                    />
+                    <tnt:NavigationListItem
+                        text="ASN Creation"
+                        key="Page2"
+                    />
+                    <tnt:NavigationListItem
+                        text="SES Creation"
+                        key="SESPOList"
+                    />
+                    <tnt:NavigationListItem
+                        text="Invoice Creation"
+                        key="invcreation"
+                    />
+                </tnt:NavigationList>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+        <tnt:mainContents>
+	<App id="myPage">
+	</App>
+    	<NavContainer id="pageContainer" initialPage="page2">
+				<pages>
+					<ScrollContainer
+						id="root1"
+						horizontal="false"
+						vertical="true"
+						height="100%"
+						class="sapUiContentPadding">
+						<Text text="This is the root page" />
+					</ScrollContainer>
+                    <ScrollContainer
+						id="root5"
+						horizontal="false"
+						vertical="true"
+						height="100%"
+						class="sapUiContentPadding">
+						<Text text="This is" />
+					</ScrollContainer>
+                    </pages>
+                    </NavContainer>
+		</tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
+
