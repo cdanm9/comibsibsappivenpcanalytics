@@ -15,6 +15,20 @@
       "version": "1.14.1",
       "toolsId": "691858fa-96ab-4947-beb7-36b92cf20d68"
     },
+    "crossNavigation": {    
+      "inbounds": {
+        "iven_pc_analytics-display": {
+          "semanticObject": "iven_pc_analytics",
+          "action": "display",
+          "title": "{{flpTitle}}",
+          "subTitle": "{{flpSubtitle}}",
+          "signature": {
+            "parameters": {},    
+            "additionalParameters": "allowed"
+          }
+        }   
+      }
+    },
     "dataSources": {
       "mainService": {
         "uri": "/sap/opu/odata/sap/ZIVN_PO_CONFIRMATION_SRV/",
