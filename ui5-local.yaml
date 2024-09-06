@@ -33,7 +33,7 @@ server:
           - path: /sap
             url: https://portal.intellectbizware.com:80
             client: '009'
-            destination: A17__
+            destination: A17
     - name: sap-fe-mockserver
       beforeMiddleware: csp
       configuration:

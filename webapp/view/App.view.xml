@@ -41,6 +41,14 @@
                         text="Invoice Creation"
                         key="invcreation"
                     />
+                    <tnt:NavigationListItem text="Purchase Order Reports" key="prcOrderReport">   
+                        <tnt:NavigationListItem text="Invoice Payment Report" key="invoice_payment_rpt"/>
+                        <tnt:NavigationListItem text="GRN Fiori Report" key="pc_grn_fiori_rept" />
+                        <tnt:NavigationListItem text="PO Report" key="po_report" />
+                        <tnt:NavigationListItem text="PO Report Buyer" key="po_report_byr" />
+                        <tnt:NavigationListItem text="PO Status Report" key="po_status_report" />
+                        <tnt:NavigationListItem text="PO To Invoice Fiori Report" key="potoinvoice_fiori_rept" />
+                    </tnt:NavigationListItem>
                 </tnt:NavigationList>
             </tnt:SideNavigation>
         </tnt:sideContent>
