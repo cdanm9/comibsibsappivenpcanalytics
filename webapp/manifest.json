@@ -102,45 +102,45 @@
         "settings": {}
       },
       "products": {
-				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/products.json"
-			},
-			"purchase": {
-				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/purchase.json"
-			},
-			"managed": {
-				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/managed.json"
-			},
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/products.json"
+      },
+      "purchase": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/purchase.json"
+      },
+      "managed": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/managed.json"
+      },
       "onPremService": {
-				"type": "sap.ui.model.odata.v2.ODataModel",
-				"settings": {
-					"headers": {
-						"loginid": "",
-						"logintype": ""
-					},
-					"defaultOperationMode": "Server",
-					"defaultBindingMode": "OneWay",
-					"defaultCountMode": "Request"
-				},
-				"dataSource": "ASNService",
-				"preload": true
-			},
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+          "headers": {
+            "loginid": "",
+            "logintype": ""
+          },
+          "defaultOperationMode": "Server",
+          "defaultBindingMode": "OneWay",
+          "defaultCountMode": "Request"
+        },
+        "dataSource": "ASNService",
+        "preload": true
+      },
       "oDataModelSES": {
-				"type": "sap.ui.model.odata.v2.ODataModel",
-				"settings": {
-					"headers": {
-						"loginid": "",
-						"logintype": ""
-					},
-					"defaultOperationMode": "Server",
-					"defaultBindingMode": "OneWay",
-					"defaultCountMode": "Request"
-				},
-				"dataSource": "SESService",
-				"preload": true
-			},
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+          "headers": {
+            "loginid": "",
+            "logintype": ""
+          },
+          "defaultOperationMode": "Server",
+          "defaultBindingMode": "OneWay",
+          "defaultCountMode": "Request"
+        },
+        "dataSource": "SESService",
+        "preload": true
+      },
       "oDataModelInvCreation": {
         "dataSource": "InvCreationService",
         "preload": true,
@@ -179,12 +179,12 @@
           ]
         },
         {
-					"name": "PODetails",
-					"pattern": "PODetails/{objectStatus}/{objectId}",
-					"target": [
-						"PODetails"
-					]
-				},
+          "name": "PODetails",
+          "pattern": "PODetails/{objectStatus}/{objectId}",
+          "target": [
+            "PODetails"
+          ]
+        },
         {
           "name": "Page1",
           "pattern": "Page1",
@@ -200,20 +200,20 @@
           ]
         },
         {
-					"pattern": "DetailASN/{navValue}/{navAsn}",
-					"name": "DetailASN",
-					"target": "DetailASN"
-				},
+          "pattern": "DetailASN/{navValue}/{navAsn}",
+          "name": "DetailASN",
+          "target": "DetailASN"
+        },
         {
-					"pattern": "SESPOList",
-					"name": "SESPOList",
-					"target": "SESPOList"
-				},
+          "pattern": "SESPOList",
+          "name": "SESPOList",
+          "target": "SESPOList"
+        },
         {
-					"pattern": "SESPODetails/{navValue}/{navSes}",
-					"name": "SESPODetails",
-					"target": "SESPODetails"
-				},
+          "pattern": "SESPODetails/{navValue}/{navSes}",
+          "name": "SESPODetails",
+          "target": "SESPODetails"
+        },
         {
           "name": "invcreation",
           "pattern": "RouteInvoice_Master",
@@ -222,12 +222,12 @@
           ]
         },
         {
-					"name": "Invoice_Detail",
-					"pattern": "Invoice_Detail/{objectStatus}/{objectId}",
-					"target": [
-						"Invoice_Detail"
-					]
-				}
+          "name": "Invoice_Detail",
+          "pattern": "Invoice_Detail/{objectStatus}/{objectId}",
+          "target": [
+            "Invoice_Detail"
+          ]
+        }
       ],
       "targets": {
         "TargetBase": {
@@ -242,9 +242,9 @@
           "controlAggregation": "pages"
         },
         "PODetails": {
-					"viewType": "XML",
-					"viewName": "PODetails"
-				},
+          "viewType": "XML",
+          "viewName": "PODetails"
+        },
         "Page1": {
           "viewType": "XML",
           "viewName": "Page1",
@@ -256,25 +256,25 @@
           "controlAggregation": "pages"
         },
         "DetailASN": {
-					"viewType": "XML",
-					"viewName": "DetailASN"
-				},
+          "viewType": "XML",
+          "viewName": "DetailASN"
+        },
         "SESPOList": {
-					"viewType": "XML",
-					"viewName": "SESPOList"
-				},
+          "viewType": "XML",
+          "viewName": "SESPOList"
+        },
         "SESPODetails": {
-					"viewType": "XML",
-					"viewName": "SESPODetails"
-				},
+          "viewType": "XML",
+          "viewName": "SESPODetails"
+        },
         "invcreation": {
           "viewType": "XML",
           "viewName": "Invoice_Master"
         },
         "Invoice_Detail": {
-					"viewType": "XML",
-					"viewName": "Invoice_Detail"
-				}
+          "viewType": "XML",
+          "viewName": "Invoice_Detail"
+        }
       }
     },
     "rootView": {
@@ -283,5 +283,9 @@
       "async": true,
       "id": "App"
     }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "comibsibsappivenpcanalytics"
   }
 }
