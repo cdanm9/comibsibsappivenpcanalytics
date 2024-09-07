@@ -12,7 +12,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:tnt="sap.tnt"
     height="100%"
->
+> 
     <tnt:ToolPage id="toolPage">
         <tnt:header>
             <tnt:ToolHeader>
@@ -53,8 +53,8 @@
             </tnt:SideNavigation>
         </tnt:sideContent>
         <tnt:mainContents>
-	<App id="myPage">
-	</App>
+        <App id="myPage">
+        </App>
     	<NavContainer id="pageContainer" initialPage="page2">
 				<pages>
 					<ScrollContainer
@@ -75,7 +75,7 @@
 					</ScrollContainer>
                     </pages>
                     </NavContainer>
-		</tnt:mainContents>
-    </tnt:ToolPage>
+		</tnt:mainContents>   
+    </tnt:ToolPage>   
 </mvc:View>
 

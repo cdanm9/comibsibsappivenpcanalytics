@@ -65,6 +65,24 @@
           "localUri": "localService/metadata.xml",
           "odataVersion": "2.0"
         }
+      },
+      "POReportService": {
+        "uri": "/sap/opu/odata/sap/ZIVN_PO_RPT_STATUS_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "POReportByrService": {
+        "uri": "/sap/opu/odata/sap/ZIVN_PO_RPT_BUYER_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
       }
     }
   },
@@ -159,7 +177,35 @@
         "dataSource": "InvCreationService",
         "preload": true,
         "settings": {}
-      }
+      },
+      "oDataModelPOService": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"headers": {
+						"loginid": "",
+						"logintype": ""
+					},
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "mainService",
+				"preload": true
+			},
+      "oDataModelPOReportByr": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"headers": {
+						"loginid": "",
+						"logintype": ""
+					},
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "mainService",
+				"preload": true
+			}
     },
     "resources": {
       "css": [
@@ -241,6 +287,34 @@
           "target": [
             "Invoice_Detail"
           ]
+        },
+        {
+          "name": "po_report",
+          "pattern": "po_report",    
+          "target": [
+            "PO_Report"
+          ]
+        },
+        {
+          "name": "PODetailsReport",
+          "pattern": "PODetailsReport/{objectStatus}/{objectId}",    
+          "target": [
+            "PODetailsReport"
+          ]    
+        },
+        {
+          "name": "po_report_byr",
+          "pattern": "po_report_byr",    
+          "target": [
+            "PO_Report_Byr"
+          ]
+        },
+        {
+          "name": "PODetailsReportByr",
+          "pattern": "PODetailsReport/{objectStatus}/{objectId}",    
+          "target": [
+            "PODetailsReportByr"
+          ]    
         }
       ],
       "targets": {
@@ -288,6 +362,22 @@
         "Invoice_Detail": {
           "viewType": "XML",
           "viewName": "Invoice_Detail"
+        },
+        "PO_Report":{
+          "viewType": "XML",
+          "viewName": "POEntriesReport"   
+        },
+        "PODetailsReport":{
+          "viewType": "XML",
+          "viewName": "PODetailsReport"   
+        },
+        "PO_Report_Byr":{
+          "viewType": "XML",
+          "viewName": "POEntriesReportByr"   
+        },
+        "PODetailsReportByr":{   
+          "viewType": "XML",
+          "viewName": "PODetailsReportByr"     
         }
       }
     },
