@@ -38,6 +38,8 @@ sap.ui.define([
                 this.setModel(models.createPropertyModelSES(), "viewModelSES");
 
                 this.setModel(models.createPropertyModelInvCreation(), "oPropertyModelInvCre");
+
+                this.setModel(models.createAppDetailsModel(), "appInfo");
             },
 
             getContentDensityClass: function () {

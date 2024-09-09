@@ -84,11 +84,15 @@ sap.ui.define([
 			});
 		},
 		_getLoginDetails: function () {
-			sLoginId = '8300894';   
+			//uncomment for local testing start
+			sLoginId = '6000000000';   
 			sLoginType = 'partner';     
 			this._user();
 			this._read();
 			this.readData(num);
+			//uncomment for local testing end
+
+			//Uncomment before deployment start
 			// $.get("/services/userapi/attributes").done(function (results) {
 			// 	sLoginId = results.login_name;
 			// 	// sLoginId = '6000000000';   
@@ -97,6 +101,7 @@ sap.ui.define([
 			// 	this._read();
 			//     this.readData(num);
 			// }.bind(this));
+			//Uncomment before deployment end
 		},
 		_user: function () {
 			this.oModel2.mCustomHeaders.loginid = sLoginId;
@@ -162,7 +167,7 @@ sap.ui.define([
 			// var filter1 = new sap.ui.model.Filter("Buyer", sap.ui.model.FilterOperator.EQ, "");
 			
 			// read detail data from SAP
-			this.oModel2.read("/HeaderSet", {
+			this.oModel2.read("/HeaderSet", {   
 				urlParameters: {
 					"$top": 30 + num,
 					// "$skip": num

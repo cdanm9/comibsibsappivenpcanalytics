@@ -1,4 +1,4 @@
-sap.ui.define(function () {
+sap.ui.define(function () {     
 	"use strict";
 
 	return {
@@ -11,19 +11,27 @@ sap.ui.define(function () {
 				return "None";
 			} else if (sValue === "Acknowledged") {
 				return "Success";
-			} else if (sValue === "Change Requested") {  
+			} else if (sValue === "Change Requested") {
 				return "Error";
 			} else if (sValue === "05") {
 				return "Error";
-			}	
+			} else if (sValue === "Confirmation not required") {
+				return "Error";
+			} else if (sValue === "Confirmation Required") {
+				return "Success";
+			} else if (sValue === "Partially Confirmed") {
+				return "Warning";
+			} else {
+				return "Information";
+			}			
 		},
 		formatStateText: function (sValue) {
 			if (sValue === "02") {
-				return "Partially Confirmed";
+				return "Partially Confirmed by Supplier";
 			} else if (sValue === "01") {
-				return "Pending ";
+				return "Pending with Supplier";
 			} else if (sValue === "03") {
-				return "Pending For Approval";
+				return "Pending with Buyer";
 			} else if (sValue === "Acknowledged") {
 				return "Acknowledged";
 			} else if (sValue === "Change Requested") {
@@ -48,6 +56,25 @@ sap.ui.define(function () {
 				return "Success";
 			}
 		},
+		formatDate: function (sValue) {
+			var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({
+				pattern: "dd.MM.yyyy"
+			});
+			var currentDate = new Date(sValue);
+			return dateFormat.format(currentDate);
+		},
+		formatDate1: function (oDate) {
+			if (oDate) {
+				var date = oDate.substring(4, 6) + "/" + oDate.substring(6, 8) + "/" + oDate.substring(0, 4);
+	
+				var DateInstance = new Date(date);
+				var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({
+					pattern: "dd.MM.yyyy"
+				});
+				return dateFormat.format(DateInstance);
+			}
+			return "";
+	    },
 		formatDueDaysIcon: function (sValue) {
 			var currentDate = new Date();
 			var diffTime = Math.abs(currentDate - sValue);
@@ -61,6 +88,9 @@ sap.ui.define(function () {
 		formatAmount: function (sValue) {
 			return Number(sValue).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		},
+		// formatDate: function (sValue) {
+		// 	return Number(sValue).toString().replace(/\B(?=(\d{2})+(?!\d))/gi, "-");
+		// },
 		formatState1: function (sValue) {
 			if (sValue === "02") {
 				return "Success";
@@ -82,19 +112,19 @@ sap.ui.define(function () {
 		},
 		formatStateText1: function (sValue) {
 			if (sValue === "02") {
-				return "Confirmed ";
+				return "Confirmed by Supplier";
 			} else if (sValue === "01") {
-				return "Pending ";
+				return "Pending with Supplier";
 			} else if (sValue === "03") {
-				return "Rejected ";
+				return "Rejected by Supplier";
 			}  else if (sValue === "04") {
-				return "Change Requested ";
+				return "Change Requested by Supplier";
 			} else if (sValue === "05") {
-				return "Deleted ";
+				return "Deleted by Supplier";
 			} else if (sValue === "06") {
-				return "Partially Confirmed ";
+				return "Partially Confirmed by Supplier";
 			} else if (sValue === "07") {
-				return "Confirmation Not Req.";
+				return "Cont. Not Required";
 			} else if (sValue === "08") {
 				return "Returned Good/Service";
 			}
@@ -117,19 +147,13 @@ sap.ui.define(function () {
 				return "Error";
 			}
 		},
-		getStatus: function (sValue) {     
-			//  debugger;
-			if (sValue == "PENDING") {  
-				return "Warning";
-			} else if (sValue == "PROCESSED") {
-				return "Information";
-			} else if (sValue == "APPROVE") {
-				return "Success";
-			} 
-			else if (sValue == "REJECT") {
-				return "Error";
-			}else{
-				return "None";
+		formatFieldEnable: function (sValue) {
+			if (sValue === "") {
+				return false;
+			} else if (sValue === "Confirmation not required") {
+				return false;
+			} else {
+				return true;
 			}
 		}
 	}

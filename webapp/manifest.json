@@ -83,7 +83,53 @@
           "localUri": "localService/metadata.xml",
           "odataVersion": "2.0"
         }
-      }
+      },
+
+      "RFQCreationService": {
+        "uri": "/sap/opu/odata/sap/ZIVN_RFQ_SUBMIT_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "SchedAgreementService": {  
+        "uri": "/sap/opu/odata/sap/ZINV_SA_CONFIRMATION_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "oDataModelInvCreationAIService": {
+        "uri": "/DOC_INFO_EXT/XSODATA/DOC_INFO_EXT.xsodata/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],   
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "oDataModelNPOInvCreateService": {
+        "uri": "/sap/opu/odata/sap/ZIBS_BFPOC_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "doc-info-ext": {
+        "uri": "/odata/v4/doc-info-ext/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/doc-info-ext/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }  
     }
   },
   "sap.ui": {
@@ -189,7 +235,7 @@
 					"defaultBindingMode": "OneWay",
 					"defaultCountMode": "Request"
 				},
-				"dataSource": "mainService",
+				"dataSource": "POReportService",
 				"preload": true
 			},
       "oDataModelPOReportByr": {
@@ -203,9 +249,58 @@
 					"defaultBindingMode": "OneWay",
 					"defaultCountMode": "Request"
 				},
-				"dataSource": "mainService",
+				"dataSource": "POReportByrService",
 				"preload": true
-			}
+			},
+      "RFQCreation": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"headers": {
+						"loginid": "",
+						"logintype": ""
+					},
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "RFQCreationService",
+				"preload": true   
+			},
+      "SchedAgreement": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"headers": {
+						"loginid": "",
+						"logintype": ""
+					},
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "SchedAgreementService",
+				"preload": true
+			},
+      "oDataModelInvCreationAI": {
+        "dataSource": "oDataModelInvCreationAIService",         
+        "preload": true,
+        "settings": {}
+      },
+      "oDataDocInfoExt": {
+        "preload": true,
+        "dataSource": "doc-info-ext",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "onPremise": {
+        "dataSource": "oDataModelNPOInvCreateService",   
+        "preload": true,
+        "settings": {}
+      }
+      
     },
     "resources": {
       "css": [
@@ -315,6 +410,84 @@
           "target": [
             "PODetailsReportByr"
           ]    
+        },
+        {
+          "name": "RFQCreation",
+          "pattern": "RFQCreation",
+          "target": [
+            "RFQView1"
+          ]
+        },
+        {
+					"name": "RFQView2",
+					"pattern": "RFQView2/{PR_NO}",
+					"target": [
+						"RFQView2"
+					]
+				},
+        {
+					"name": "RFQView3",
+					"pattern": "RFQView3/{QUO_NO}/{ITEM_NO}",
+					"target": [
+						"RFQView3"
+					]
+				},
+        {
+          "name": "SchedAgreement",
+          "pattern": "SchedAgrPOEntries",  
+          "target": [
+            "SchedAgrPOEntries"
+          ]
+        },
+        {
+					"name": "SchedAgrPODetails",
+					"pattern": "SchedAgrPODetails/{objectId}",
+					"target": [
+						"SchedAgrPODetails"
+					]
+				},
+        {
+					"name": "SAConfirm",
+					"pattern": "SAConfirm/{objectId}",
+					"target": [
+						"SAConfirm"
+					]
+				},
+        {
+          "name": "InvCreationAI",
+          "pattern": "InvCreationAI",
+          "target": [
+            "InvCreationAI"
+          ]
+        },
+        {
+          "name": "RouteView1",
+          "pattern": "View1",
+          "target": [
+            "TargetView1"
+          ]
+        },
+        {
+          "name": "createView",
+          "pattern": "createView",
+          "target": [
+            "createView"
+          ]
+        },
+        {
+          "name": "DetailPage",
+          "pattern": "DetailPage/{PO_FILE_NO}",
+          "target": [
+            "TargetView1",
+            "TargetDetailPage"    
+          ]
+        },
+        {
+          "name": "RouteServiceMsg",
+          "pattern": "ServiceMsg",
+          "target": [
+            "TargetServiceMsg"
+          ]
         }
       ],
       "targets": {
@@ -378,6 +551,81 @@
         "PODetailsReportByr":{   
           "viewType": "XML",
           "viewName": "PODetailsReportByr"     
+        },
+        "RFQView1": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "RFQView1",
+          "viewName": "RFQView1"
+        },
+        "RFQView2": {
+					"viewType": "XML",
+					"viewName": "RFQView2"
+				},
+        "RFQView3": {
+					"viewType": "XML",
+					"viewName": "RFQView3"      
+				},
+        "SchedAgrPOEntries": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "SchedAgrPOEntries",
+          "viewName": "SchedAgrPOEntries"   
+        },
+        "SchedAgrPODetails": {
+					"viewType": "XML",
+					"viewName": "SchedAgrPODetails"
+				},
+        "SAConfirm": {
+					"viewType": "XML",
+					"viewName": "SAConfirm"
+				},
+        "InvCreationAI": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "InvCreationAI",
+          "viewName": "InvCreationAI"   
+        },
+        "NPOInvCreate": {
+          "viewId": "NPOInvCreate",
+          "viewName": "pc_inv_submit.NPOInvCreate"      
+        },
+        "TargetView1": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "View1",
+          "viewName": "pc_inv_submit.View1",
+          "controlAggregation": "beginColumnPages",
+          "parent": "NPOInvCreate",
+          "controlId": "NPOInvCreate"
+        },
+        "createView": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "createView",
+          "viewName": "pc_inv_submit.createView",
+          "controlAggregation": "beginColumnPages",      
+          "parent": "NPOInvCreate",
+          "controlId": "NPOInvCreate"   
+        },
+        "TargetDetailPage": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "DetailPage",
+          "viewName": "pc_inv_submit.DetailPage",
+          "controlAggregation": "midColumnPages",
+          "parent": "NPOInvCreate",
+          "controlId": "NPOInvCreate"
+        },
+        "TargetServiceMsg": {
+          "viewType": "XML",
+          "viewName": "pc_inv_submit.ServiceMsg"
         }
       }
     },

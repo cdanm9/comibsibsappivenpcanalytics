@@ -19,10 +19,10 @@
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:sideContent>
-            <tnt:SideNavigation itemSelect="onItemSelect">
+            <!-- <tnt:SideNavigation itemSelect="onItemSelect">
                 <tnt:NavigationList>
                     <tnt:NavigationListItem
-                        text="PO Confirmation"
+                        text="PO Confirmation"   
                         key="Master"
                     />
                     <tnt:NavigationListItem
@@ -41,6 +41,26 @@
                         text="Invoice Creation"
                         key="invcreation"
                     />
+                    <tnt:NavigationListItem
+                        text="Invoice Creation AI"
+                        key="InvCreationAI"   
+                    />
+
+                    <tnt:NavigationListItem
+                        text="RFQ Creation"
+                        key="RFQCreation"
+                    />
+
+                    <tnt:NavigationListItem
+                        text="Scheduler Agreement"
+                        key="SchedAgreement"      
+                    />
+                    <tnt:NavigationListItem
+                        text="Non PO Invoice Creation"
+                        key="NonPOInvCreation"        
+                    />
+
+
                     <tnt:NavigationListItem text="Purchase Order Reports" key="prcOrderReport">   
                         <tnt:NavigationListItem text="Invoice Payment Report" key="invoice_payment_rpt"/>
                         <tnt:NavigationListItem text="GRN Fiori Report" key="pc_grn_fiori_rept" />
@@ -50,7 +70,18 @@
                         <tnt:NavigationListItem text="PO To Invoice Fiori Report" key="potoinvoice_fiori_rept" />
                     </tnt:NavigationListItem>
                 </tnt:NavigationList>
+            </tnt:SideNavigation> -->    
+
+            <tnt:SideNavigation itemSelect="onItemSelect">
+                <tnt:NavigationList items="{appInfo>/AppList}">
+                    <tnt:NavigationListItem text="{appInfo>AppText}" key="{appInfo>AppKey}" items="{appInfo>SubApps}">
+                        <tnt:items>
+                            <tnt:NavigationListItem text="{appInfo>AppText}" key="{appInfo>AppKey}"/>    
+                        </tnt:items>
+                    </tnt:NavigationListItem>
+                </tnt:NavigationList>
             </tnt:SideNavigation>
+
         </tnt:sideContent>
         <tnt:mainContents>
         <App id="myPage">

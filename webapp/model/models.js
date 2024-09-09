@@ -9,6 +9,63 @@ function (JSONModel, Device) {
         /**
          * Provides runtime info for the device the UI5 app is running on as JSONModel
          */
+		createAppDetailsModel:function(){
+			var oAppDetails = {
+				AppList: [
+					{
+						AppKey: "Master",
+						AppText: "PO Confirmation"
+					},
+					{
+						AppKey: "Page1",
+						AppText: "Order Analytics"
+					},
+					{
+						AppKey: "Page2",
+						AppText: "ASN Creation"
+					},
+					{
+						AppKey: "SESPOList",
+						AppText: "SES Creation"
+					},
+					{
+						AppKey: "invcreation",
+						AppText: "Invoice Creation"
+					},
+					{
+						AppKey: "InvCreationAI",
+						AppText: "Invoice Creation AI"
+					},
+					{
+						AppKey: "RFQCreation",
+						AppText: "RFQ Creation"
+					},
+					{
+						AppKey: "SchedAgreement",
+						AppText: "Scheduler Agreement"
+					},
+					{
+						AppKey: "RouteView1",   
+						AppText: "Non PO Invoice Creation"
+					},
+					{
+						AppKey: "prcOrderReport",
+						AppText: "Purchase Order Reports",
+						SubApps: [    
+							{ AppKey: "invoice_payment_rpt", AppText: "Invoice Payment Report" },
+							{ AppKey: "pc_grn_fiori_rept", AppText: "GRN Fiori Report" },
+							{ AppKey: "po_report", AppText: "PO Report" },
+							{ AppKey: "po_report_byr", AppText: "PO Report Buyer" },
+							{ AppKey: "po_status_report", AppText: "PO Status Report" },
+							{ AppKey: "potoinvoice_fiori_rept", AppText: "PO To Invoice Fiori Report" }
+						]
+					}
+				]
+			};
+			var oModel = new JSONModel(oAppDetails);
+            oModel.setDefaultBindingMode("OneWay");
+            return oModel;
+		},
         createDeviceModel: function () {
             var oModel = new JSONModel(Device);
             oModel.setDefaultBindingMode("OneWay");
@@ -22,7 +79,11 @@ function (JSONModel, Device) {
 				"fragDatePickerValue": new Date(),
 				"servicePO": false,
 				"editCheck": false,
-				"btnEnable": false
+				"btnEnable": false,
+				"inputEnable": false,//RFQ Creation App
+				"BtnEnable1": false,//RFQ Creation App
+				"BtnEnable": false,  //RFQ Creation App  
+				"fieldEnable": true //Scheduler Agreement    
 			};
 			var oModel = new JSONModel(oPropertyModel);
 			return oModel;
