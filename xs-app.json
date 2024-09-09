@@ -3,10 +3,24 @@
   "authenticationMethod": "none",
   "routes": [
     {
+      "source": "^/DOC_INFO_EXT/(.*)$",
+      "target": "/DOC_INFO_EXT/$1",
+      "destination": "HanaDB",
+      "authenticationType": "none",
+      "csrfProtection": false   
+    },
+    {
+      "source": "^/odata/(.*)$",
+      "target": "/odata/$1",
+      "destination": "IVEN_DATA",       
+      "authenticationType": "none",
+      "csrfProtection": false
+    },
+    {
       "source": "^/sap/(.*)$",
       "target": "/sap/$1",
       "destination": "A17",
-      "authenticationType": "none",   
+      "authenticationType": "none",       
       "csrfProtection": false
     },
     {

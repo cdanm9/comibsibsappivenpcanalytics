@@ -20,6 +20,12 @@ server:
             url: https://portal.intellectbizware.com:80
             client: '009'
             destination: A17  
+          - path: /DOC_INFO_EXT
+            url: https://xsc7eb9cb36.ap1.hana.ondemand.com
+            destination: HanaDB      
+          - path: /odata    
+            url: https://ibs-portal-dev-ibs-portal-dev-vendor-portal-srv.cfapps.us10.hana.ondemand.com/
+            destination: IVEN_DATA
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
