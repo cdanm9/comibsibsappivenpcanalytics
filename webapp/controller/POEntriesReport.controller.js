@@ -5,7 +5,7 @@ sap.ui.define([
 	"sap/m/MessageToast",
 	"sap/ui/model/Sorter",
 	"sap/m/MessageBox",
-	"../model/formatter",    
+	"../model/formatterPOReport",       
     'sap/ui/export/library',
     "sap/ui/export/Spreadsheet",
     "sap/ui/core/library",

@@ -68,7 +68,8 @@
 						<content>
 							<!--<ScrollContainer height='50rem' vertical='true'>-->
 							<Table id="POTable" showSeparators="Inner" mode="SingleSelectMaster" sticky="HeaderToolbar,ColumnHeaders" growing="true" growingScrollToLoad="true" growingThreshold="30" selectionChange="onSelectionChange"
-								items="{ path: 'lists>/', sorter: [ { path: 'PoDate', descending: 'true' },{ path: 'PoNumber', descending: 'true' } ] }">
+								items="{ path: 'lists>/', sorter: [ { path: 'PoDate', descending: 'true' },{ path: 'PoNumber', descending: 'true' } ] }"
+								>     
 								<headerToolbar>
 									<Toolbar>
 										<Title level="H2" text="{oPropertyModel>/tableTitle}"/>
@@ -83,28 +84,28 @@
 									</Toolbar>
 								</headerToolbar>
 								<columns>
-									<Column hAlign="Center"  width="7rem">
+									<Column hAlign="Center" >
 										<Label design="Bold" text="{i18n>TableCol1}"/>
 									</Column>
-									<Column hAlign="Center"  width="7rem">
+									<Column hAlign="Center">
 										<Label design="Bold" text="{i18n>TableCol2}"/>
 									</Column>
 									<!--<Column hAlign="Center">-->
 									<!--	<Label design="Bold" text="{i18n>TableCol3}"/>-->
 									<!--</Column>-->
-									<Column hAlign="Center" width="9rem">
+									<Column hAlign="Center">
 										<Label design="Bold" text="{i18n>TableCol4}"/>
 									</Column>
-									<Column hAlign="Center" width="10.2rem">
-										<Label design="Bold" text="{i18n>TableCol5}"/>
+									<Column hAlign="Center" >
+										<Label design="Bold" text="{i18n>TableCol5Byr}"/>  
 									</Column>
-									<Column hAlign="Center" width="15rem">
+									<Column hAlign="Center" >
 										<Label design="Bold" text="Header Text"/>
 									</Column>
-									<Column hAlign="Center" width="15rem">
+									<Column hAlign="Center" >
 										<Label design="Bold" text="Note"/>
 									</Column> 
-									<Column hAlign="Center" width="6rem">
+									<Column hAlign="Center" >  
 										<Label design="Bold" text="{i18n>TableCol7}"/>
 									</Column>
 								</columns>
